@@ -638,9 +638,9 @@ namespace xt
 					JUDY_REPORT_ERROR("value not assigned");
 					throw std::bad_alloc();
 				}
-				return const_iterator(this, key, ret, false);
+				return const_iterator(const_cast<judy_string_map*>(this), key, value_type::get_val_ref(ret), false);
 			}
-			return const_iterator(this);
+			return const_iterator(const_cast<judy_string_map*>(this));
 		}
 		const_iterator end() const
 		{
@@ -663,7 +663,7 @@ namespace xt
 				{
 					JUDY_REPORT_ERROR("value not assigned");
 				}
-				return reverse_iterator(this, key, ret, false);
+				return reverse_iterator(this, key, value_type::get_val_ref(ret), false);
 			}
 			return reverse_iterator(this);
 		}
@@ -739,7 +739,7 @@ namespace xt
 			bool inserted = false;
 			if (*ret == 0)
 			{
-				value_type::copy_second(ret, val);
+				value_type::copy_second(ret, const_cast<T&>(val));
 				m_count++;
 				inserted = true;
 			}
