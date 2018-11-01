@@ -25,9 +25,9 @@ These collection classes work almost identically to the STL libraries, except th
 
 This is a header only library that requires the JudyArray library http://judy.sourceforge.net/.
 
-template<typename S, typename T> class judy_int_map
-template<typename T> class judy_string_map 
-template<typename T> class judy_int_set
+  - template<typename S, typename T> class judy_int_map
+  - template<typename T> class judy_string_map 
+  - template<typename T> class judy_int_set
   
 These classes use a integer or a string as a key which are used internally by the JudyArray library, other types such as dates may also work if converted into something like a julian integer.
 
